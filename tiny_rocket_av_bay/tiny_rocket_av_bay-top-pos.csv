@@ -1,0 +1,4 @@
+Designator,Val,Package,Mid X,Mid Y,Rotation,Layer
+J6,VDDIO_EXT,PinHeader_1x01_P2.54mm_Vertical,67.691,-86.614,0,top
+J8,Analog,PinHeader_1x02_P2.54mm_Vertical,39.9415,-87,180,top
+U1,Nicla Vision,Nicla Vision,54.356,-93.599,0,top

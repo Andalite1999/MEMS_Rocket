@@ -1,0 +1,5 @@
+(fp_lib_table
+  (version 7)
+  (lib (name "male_footprints")(type "KiCad")(uri "${KIPRJMOD}/male/male_footprints.pretty")(options "")(descr ""))
+  (lib (name "female_footprints")(type "KiCad")(uri "${KIPRJMOD}/female/female_footprints.pretty")(options "")(descr ""))
+)

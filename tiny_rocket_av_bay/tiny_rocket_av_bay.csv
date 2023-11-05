@@ -1,0 +1,17 @@
+"Id;""Designator"";""Footprint"";""Quantity"";""Designation"";""Supplier and ref"";",,,
+"1;""H4",H1,H2,"H3"";""MountingHole_2.2mm_M2_DIN965"";4;""MountingHole"";;;"
+"2;""J8"";""PinHeader_1x02_P2.54mm_Vertical"";1;""Analog"";;;",,,
+"3;""U1"";""Nicla Vision"";1;""Nicla Vision"";;;",,,
+"4;""J6"";""PinHeader_1x01_P2.54mm_Vertical"";1;""VDDIO_EXT"";;;",,,
+"5;""J4"";""PinHeader_1x03_P2.54mm_Vertical"";1;""Servo 0"";;;",,,
+"6;""J2"";""PinHeader_1x03_P2.54mm_Vertical"";1;""Servo 1"";;;",,,
+"7;""U5"";""TO252-3_ROM"";1;""BD450M5FP-CE2"";;;",,,
+"8;""C5",C6,C7,"C4"";""C_0805_2012Metric_Pad1.18x1.45mm_HandSolder"";4;""10u"";;;"
+"9;""C1","C2"";""C_0603_1608Metric_Pad1.08x0.95mm_HandSolder"";2;"".1u"";;;",,
+"10;""R2"";""R_0603_1608Metric_Pad0.98x0.95mm_HandSolder"";1;""96"";;;",,,
+"11;""U6"";""HTSSOP-14-1EP_4.4x5mm_P0.65mm_EP3.4x5mm_Mask3x3.1mm"";1;""TXU0104BQAR"";;;",,,
+"12;""BT1"";""PinHeader_1x02_P2.54mm_Vertical"";1;""Battery"";;;",,,
+"13;""D1"";""LED_0805_2012Metric_Pad1.15x1.40mm_HandSolder"";1;""On/Off - Green"";;;",,,
+"14;""U4"";""TO-220-3_MCL"";1;""MIC29300-12WT"";;;",,,
+"15;""J3"";""PinHeader_1x03_P2.54mm_Vertical"";1;""Servo 2"";;;",,,
+"16;""J5"";""PinHeader_1x03_P2.54mm_Vertical"";1;""Servo 3"";;;",,,

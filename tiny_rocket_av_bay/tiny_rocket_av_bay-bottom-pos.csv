@@ -1,0 +1,17 @@
+Designator,Val,Package,Mid X,Mid Y,Rotation,Layer
+BT1,Battery,PinHeader_1x02_P2.54mm_Vertical,46.101,-79.629,90,bottom
+C1,.1u,C_0603_1608Metric_Pad1.08x0.95mm_HandSolder,51.181,-96.774,-90,bottom
+C2,.1u,C_0603_1608Metric_Pad1.08x0.95mm_HandSolder,48.006,-96.774,90,bottom
+C4,10u,C_0805_2012Metric_Pad1.18x1.45mm_HandSolder,54.991,-84.836,0,bottom
+C5,10u,C_0805_2012Metric_Pad1.18x1.45mm_HandSolder,54.991,-82.55,0,bottom
+C6,10u,C_0805_2012Metric_Pad1.18x1.45mm_HandSolder,66.675,-83.566,-90,bottom
+C7,10u,C_0805_2012Metric_Pad1.18x1.45mm_HandSolder,57.9755,-76.708,0,bottom
+D1,On/Off - Green,LED_0805_2012Metric_Pad1.15x1.40mm_HandSolder,48.641,-76.708,180,bottom
+J2,Servo 1,PinHeader_1x03_P2.54mm_Vertical,55.499,-91.44,-90,bottom
+J3,Servo 2,PinHeader_1x03_P2.54mm_Vertical,55.499,-95.25,-90,bottom
+J4,Servo 0,PinHeader_1x03_P2.54mm_Vertical,55.499,-87.63,-90,bottom
+J5,Servo 3,PinHeader_1x03_P2.54mm_Vertical,55.499,-99.06,-90,bottom
+R2,96,R_0603_1608Metric_Pad0.98x0.95mm_HandSolder,50.419,-79.502,180,bottom
+U4,MIC29300-12WT,TO-220-3_MCL,54.991,-79.248,0,bottom
+U5,BD450M5FP-CE2,TO252-3_ROM,49.657,-90.932,0,bottom
+U6,TXU0104BQAR,HTSSOP-14-1EP_4.4x5mm_P0.65mm_EP3.4x5mm_Mask3x3.1mm,49.796,-101.714,180,bottom

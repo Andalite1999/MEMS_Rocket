@@ -1,0 +1,9 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "BQ296xxx")(type "KiCad")(uri "/Users/cedricmurphy/Downloads/ul_BQ296115DSGR/KiCADv6/2023-06-26_19-28-35.kicad_sym")(options "")(descr ""))
+  (lib (name "INA300AIDSQR")(type "KiCad")(uri "/Users/cedricmurphy/Downloads/INA300AIDSQR/INA300AIDSQR.kicad_sym")(options "")(descr ""))
+  (lib (name "NRF52840")(type "KiCad")(uri "/Users/cedricmurphy/Downloads/ul_NRF52840/KiCADv6/2023-06-29_02-40-46.kicad_sym")(options "")(descr ""))
+  (lib (name "TPS62163DSGR")(type "KiCad")(uri "/Users/cedricmurphy/Downloads/ul_TPS62163DSGR/KiCADv6/2023-07-14_04-53-45.kicad_sym")(options "")(descr ""))
+  (lib (name "TL2575-12IKTTR")(type "KiCad")(uri "/Users/cedricmurphy/Downloads/ul_TL2575-12IKTTR/KiCADv6/2023-07-14_05-26-36.kicad_sym")(options "")(descr ""))
+  (lib (name "Mini_rocket")(type "KiCad")(uri "${KIPRJMOD}/Mini_rocket.kicad_sym")(options "")(descr ""))
+)
