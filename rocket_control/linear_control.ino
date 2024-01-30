@@ -20,7 +20,6 @@ void setupServos() {
 }
 
 void pathPlanning() {
-  // this function take in x and y coordinates of target.  The next step is to orient the rocket perpendicular to the target then a path to move the rocket forwards or backwards in tandem with the canards to move the rocket to the target.  The angles of attack will also depend on the current acceleration and speed of the rocket
 }
 
 // calculate current airspeed based off of acceleration and time, adding the integration of acceleration over time to the current airspeed
@@ -29,6 +28,20 @@ void update_airspeed() {
   velocity_x += accel_x * deltaTime;
   velocity_y += accel_y * deltaTime;
   velocity_z += (accel_z - 9.81) * deltaTime;  //account for gravity
+  // Print velocity (could be an estimate of airspeed)
+  Serial.print("Velocity X: ");
+  Serial.println(velocity_x);
+  Serial.print("Velocity Y: ");
+  Serial.println(velocity_y);
+  Serial.print("Velocity Z: ");
+  Serial.println(velocity_z);
+}
+
+void update_location() {
+  float deltaTime = duration / 10000;
+  pos_x += pos_x * deltaTime;
+  pos_y += pos_y * deltaTime;
+  pos_z += pos_z * deltaTime;  //account for gravity
   // Print velocity (could be an estimate of airspeed)
   Serial.print("Velocity X: ");
   Serial.println(velocity_x);

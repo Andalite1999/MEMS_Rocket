@@ -13,8 +13,6 @@ double velocity_x, velocity_y, velocity_z = 0;
 // location
 double pos_x, pos_y, posz = 0;
 double orientation_x, orientation_y, orientation_z = 0; 
-// target location
-double camera_x, camera_y = 0;
 // TODO: update path planning
 // canard angles, note a parallel angle to rocket body is 0 degrees
 float cr_angle = 0; //USING RADIANS
@@ -47,6 +45,7 @@ void loop()
   update_gyro();
   // update the current velocity
   update_airspeed();
+  update_location();
   // update the location of the target with the camera, calculate distance from target
   // update path planning
   // update the canard angles
