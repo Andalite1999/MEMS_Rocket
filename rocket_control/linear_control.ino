@@ -29,12 +29,12 @@ void update_airspeed() {
   velocity_y += accel_y * deltaTime;
   velocity_z += (accel_z - 9.81) * deltaTime;  //account for gravity
   // Print velocity (could be an estimate of airspeed)
-  Serial.print("Velocity X: ");
-  Serial.println(velocity_x);
-  Serial.print("Velocity Y: ");
-  Serial.println(velocity_y);
-  Serial.print("Velocity Z: ");
-  Serial.println(velocity_z);
+  // Serial.print("Velocity X: ");
+  // Serial.println(velocity_x);
+  // Serial.print("Velocity Y: ");
+  // Serial.println(velocity_y);
+  // Serial.print("Velocity Z: ");
+  // Serial.println(velocity_z);
 }
 
 void update_location() {
@@ -43,12 +43,12 @@ void update_location() {
   pos_y += pos_y * deltaTime;
   pos_z += pos_z * deltaTime;  //account for gravity
   // Print velocity (could be an estimate of airspeed)
-  Serial.print("Velocity X: ");
-  Serial.println(velocity_x);
-  Serial.print("Velocity Y: ");
-  Serial.println(velocity_y);
-  Serial.print("Velocity Z: ");
-  Serial.println(velocity_z);
+  // Serial.print("Velocity X: ");
+  // Serial.println(velocity_x);
+  // Serial.print("Velocity Y: ");
+  // Serial.println(velocity_y);
+  // Serial.print("Velocity Z: ");
+  // Serial.println(velocity_z);
 }
 
 void update_orientation() {
