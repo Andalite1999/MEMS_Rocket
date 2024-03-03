@@ -10,7 +10,7 @@
 double accel_x, accel_y, accel_z = 0;
 double g_x, g_y, g_z = 0;
 double twist_x, twist_y, twist_z = 0;
-double yaw_corr_1s = .65/1000; //subtract yaw by this value every 1000 micro
+double yaw_corr_1s = .65; //subtract yaw by this value every 1000 micro
 // airspeed
 double position_x = 0, position_y = 0, position_z = 0; // Position in meters
 double velocity_x = 0, velocity_y = 0, velocity_z = 0; // Velocity in m/s
@@ -43,14 +43,15 @@ int cl_pin = 0;
 
 void setup()
 {
+  // yaw_corr_1s = 0;
   setupIMU();
   setupServos();
-  lastUpdateTime = micros(); 
+  lastUpdateTime = millis(); 
 }
 
 void loop()
 {
-  currentTime = micros();
+  currentTime = millis();
   deltaTime = (currentTime - lastUpdateTime) / 1000.0; // Time elapsed in seconds
   // update the current angle/orientation/acceleration of the rocket with the IMU
   update_accel();
@@ -64,7 +65,7 @@ void loop()
   // update the canard angles
   // get tick count
   // write_servo();
-  endTime = micros();
+  endTime = millis();
   // Serial.print("Loop Duration: ");
   // Serial.print(duration);
   // Serial.print(" ms");
@@ -74,24 +75,10 @@ void loop()
   // Print acceleration
   
 
-  // Print velocities
-  // Serial.print(" Velocity X: ");
-  // Serial.print(velocity_x);
-  // Serial.print(" m/s, Y: ");
-  // Serial.print(velocity_y);
-  // Serial.print(" m/s, Z: ");
-  // Serial.print(velocity_z);
-  // Serial.print(" m/s");
+  
 
   // Optionally print the position to the Serial monitor
-  // Serial.print(" Position X: ");
-  // Serial.print(position_x);
-  // Serial.print(" m, Y: ");
-  // Serial.print(position_y);
-  // Serial.print(" m, Z: ");
-  // Serial.print(position_z);
-  // Serial.print(" m");
-
+  
   // Delay for a bit to not flood the serial output
   // delay(100);
   // Serial.println();

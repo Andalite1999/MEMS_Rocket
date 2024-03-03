@@ -145,10 +145,10 @@ void updateVelocity() {
     Serial.print(" Yaw: ");
     Serial.print(yaw);
 
-    Serial.print(" pitchRad: ");
-    Serial.print(pitchRad);
-    Serial.print(" rollRad: ");
-    Serial.print(rollRad);
+    // Serial.print(" pitchRad: ");
+    // Serial.print(pitchRad);
+    // Serial.print(" rollRad: ");
+    // Serial.print(rollRad);
     // Calculate gravity vector
     // g_x = -sin(rollRad) * 9.81 * cos(pitchRad);
 
@@ -156,26 +156,44 @@ void updateVelocity() {
     g_y = sin(pitchRad) * 9.81;
     g_z = cos(pitchRad) * cos(rollRad) * 9.81;
 
-    Serial.print(" Gravity X: ");
-    Serial.print(g_x);
-    Serial.print(" m/s^2, Y: ");
-    Serial.print(g_y);
-    Serial.print(" m/s^2, Z: ");
-    Serial.print(g_z);
-    Serial.print(" m/s^2");
+    // Serial.print(" Gravity X: ");
+    // Serial.print(g_x);
+    // Serial.print(" m/s^2, Y: ");
+    // Serial.print(g_y);
+    // Serial.print(" m/s^2, Z: ");
+    // Serial.print(g_z);
+    // Serial.print(" m/s^2");
 
     // Correct acceleration readings by subtracting gravity component
     accel_x = (accel_x * 9.81) - g_x;
     accel_y = (accel_y * 9.81) - g_y;
     accel_z = (accel_z * 9.81) - g_z;
 
-    Serial.print(" Acceleration X: ");
-    Serial.print(accel_x);
-    Serial.print(" m/s^2, Y: ");
-    Serial.print(accel_y);
-    Serial.print(" m/s^2, Z: ");
-    Serial.print(accel_z);
-    Serial.println(" m/s^2");
+    // Print velocities
+    Serial.print(" Velocity X: ");
+    Serial.print(velocity_x);
+    Serial.print(" m/s, Y: ");
+    Serial.print(velocity_y);
+    Serial.print(" m/s, Z: ");
+    Serial.print(velocity_z);
+    Serial.print(" m/s");
+
+    // Serial.print(" Acceleration X: ");
+    // Serial.print(accel_x);
+    // Serial.print(" m/s^2, Y: ");
+    // Serial.print(accel_y);
+    // Serial.print(" m/s^2, Z: ");
+    // Serial.print(accel_z);
+    // Serial.print(" m/s^2");
+
+    Serial.print(" Position X: ");
+    Serial.print(position_x);
+    Serial.print(" m, Y: ");
+    Serial.print(position_y);
+    Serial.print(" m, Z: ");
+    Serial.print(position_z);
+    Serial.println(" m");
+
 
     // Integrate acceleration to get velocity
     velocity_x += ((accel_x + last_accel_x) / 2) * deltaTime;

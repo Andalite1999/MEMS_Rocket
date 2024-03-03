@@ -20,7 +20,7 @@ def extract_numbers(s):
 
 
 # Read and parse the data from the file
-with open("everything.txt", "r") as file:
+with open("everything_0.txt", "r") as file:
     for line in file:
         # Extract numerical values using regular expressions
         numbers = extract_numbers(line)
