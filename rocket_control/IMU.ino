@@ -6,6 +6,8 @@
 // Complementary filter parameter
 const double alpha = 0.5;
 
+// Accelerometer sample rate = 104.00 Hz
+
 
 
 // Time tracking
@@ -24,18 +26,6 @@ void setupIMU()
     while (1)
       ;
   }
-  // Serial.print("Accelerometer sample rate = ");
-  // Serial.print(IMU.accelerationSampleRate());
-  // Serial.println(" Hz");
-  // Serial.println();
-  // Serial.println("Acceleration in g's");
-  // Serial.println("X\tY\tZ");
-  // Serial.print("Gyroscope sample rate = ");
-  // Serial.print(IMU.gyroscopeSampleRate());
-  // Serial.println(" Hz");
-  // Serial.println();
-  // Serial.println("Gyroscope in degrees/second");
-  // Serial.println("X\tY\tZ");
 }
 
 void update_accel()
@@ -83,8 +73,14 @@ void updateOrientation() {
   // previousTime = currentTime;
 
   // Accelerometer angles (no change from previous)
-  double accel_pitch = atan2(accel_y, sqrt(accel_x * accel_x + accel_z * accel_z)) * 180.0 / PI;
-  double accel_roll = atan2(-accel_x, accel_z) * 180.0 / PI;
+  // double accel_roll = atan2(-accel_x, accel_z) * 180.0 / PI;
+  double accel_roll = atan2(accel_y, accel_z) * 180.0 / PI;
+  // double accel_pitch = atan2(accel_y, sqrt(accel_x * accel_x + accel_z * accel_z)) * 180.0 / PI;
+  // double accel_pitch = atan(-accel_x / (accel_y * sin(accel_roll * PI / 180.0) + accel_z * cos(accel_roll * PI / 180.0))) * 180.0 / PI;
+  double accel_pitch = atan2(accel_y * sin(accel_roll * PI / 180.0) + accel_z * cos(accel_roll * PI / 180.0), -accel_x) * 180.0 / PI;
+  //phase ambiguity, when sine and cosine. Observe when printing out all three axis
+  //note that the pitch goes crazy in one of the orientations
+  //mi
 
   // Gyroscope rates in degrees/sec
   double gyro_pitch_rate = twist_x;
@@ -114,7 +110,7 @@ void updateOrientation() {
 
 void updateVelocity() {
   // Assuming you have a function to read acceleration data from your accelerometer
-  float accel_x, accel_y, accel_z;
+  // float accel_x, accel_y, accel_z;
   bool newData = false; // Set to true if new data is read
   if (IMU.accelerationAvailable()) {
     IMU.readAcceleration(accel_x, accel_y, accel_z);
@@ -165,18 +161,22 @@ void updateVelocity() {
     // Serial.print(" m/s^2");
 
     // Correct acceleration readings by subtracting gravity component
-    accel_x = (accel_x * 9.81) - g_x;
-    accel_y = (accel_y * 9.81) - g_y;
-    accel_z = (accel_z * 9.81) - g_z;
+    // accel_x = (accel_x * 9.81) - g_x;
+    // accel_y = (accel_y * 9.81) - g_y;
+    // accel_z = (accel_z * 9.81) - g_z;
+
+     accel_x = (accel_x * 9.81);
+    accel_y = (accel_y * 9.81);
+    accel_z = (accel_z * 9.81);
 
     // Print velocities
-    Serial.print(" Velocity X: ");
-    Serial.print(velocity_x);
-    Serial.print(" m/s, Y: ");
-    Serial.print(velocity_y);
-    Serial.print(" m/s, Z: ");
-    Serial.print(velocity_z);
-    Serial.print(" m/s");
+    // Serial.print(" Velocity X: ");
+    // Serial.print(velocity_x);
+    // Serial.print(" m/s, Y: ");
+    // Serial.print(velocity_y);
+    // Serial.print(" m/s, Z: ");
+    // Serial.print(velocity_z);
+    // Serial.print(" m/s");
 
     // Serial.print(" Acceleration X: ");
     // Serial.print(accel_x);
@@ -185,14 +185,21 @@ void updateVelocity() {
     // Serial.print(" m/s^2, Z: ");
     // Serial.print(accel_z);
     // Serial.print(" m/s^2");
-
-    Serial.print(" Position X: ");
-    Serial.print(position_x);
-    Serial.print(" m, Y: ");
-    Serial.print(position_y);
-    Serial.print(" m, Z: ");
-    Serial.print(position_z);
-    Serial.println(" m");
+    Serial.print(" accel_x: ");
+    Serial.print(accel_x);
+    Serial.print(" accel_y: ");
+    Serial.print(accel_y);
+    Serial.print(" accel_z: ");
+    Serial.print(accel_z);
+    Serial.print(" time: ");
+    Serial.println(currentTime);
+    // Serial.print(" Position X: ");
+    // Serial.print(position_x);
+    // Serial.print(" m, Y: ");
+    // Serial.print(position_y);
+    // Serial.print(" m, Z: ");
+    // Serial.print(position_z);
+    // Serial.println(" m");
 
 
     // Integrate acceleration to get velocity

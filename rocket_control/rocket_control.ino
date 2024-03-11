@@ -7,7 +7,7 @@
 
 
 // current angle/orientation/acceleration IMU
-double accel_x, accel_y, accel_z = 0;
+float accel_x, accel_y, accel_z = 0;
 double g_x, g_y, g_z = 0;
 double twist_x, twist_y, twist_z = 0;
 double yaw_corr_1s = .65; //subtract yaw by this value every 1000 micro
@@ -18,11 +18,26 @@ double last_accel_x = 0, last_accel_y = 0, last_accel_z = 0; // Last acceleratio
 unsigned long lastUpdateTime = 0; // Last update time in microseconds
 unsigned long currentTime = 0;
 float deltaTime = 0;
+//quaternions
+// Assuming these variables are declared globally
+double pitch = 0, roll = 0, yaw = 0; // Euler angles
+// double accel_x, accel_y, accel_z; // Accelerometer readings
+// double twist_x, twist_y, twist_z; // Gyroscope readings
+// double velocity_x, velocity_y, velocity_z; // Velocities
+// double position_x, position_y, position_z; // Positions
+// double last_accel_x, last_accel_y, last_accel_z; // Last acceleration readings
+// unsigned long lastUpdateTime = 0; // Last update time
+// const double alpha = 0.5; // Complementary filter parameter
+
+
+
+
+
 // location
 double pos_x, pos_y, pos_z = 0;
 double orientation_x, orientation_y, orientation_z = 0; 
 // Orientation angles
-double pitch = 0, roll = 0, yaw = 0;
+// double pitch = 0, roll = 0, yaw = 0;
 // TODO: update path planning
 // canard angles, note a parallel angle to rocket body is 0 degrees
 float cr_angle = 0; //USING RADIANS
@@ -65,6 +80,7 @@ void loop()
   // update the canard angles
   // get tick count
   // write_servo();
+  save_data();
   endTime = millis();
   // Serial.print("Loop Duration: ");
   // Serial.print(duration);
@@ -115,4 +131,9 @@ void write_servo()
   Serial.print("position:");
   Serial.println(final_p(IMU_radian));
   delay(15);
+}
+
+void save_data()
+{
+
 }
