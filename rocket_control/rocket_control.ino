@@ -8,7 +8,7 @@
 
 // current angle/orientation/acceleration IMU
 float accel_x, accel_y, accel_z = 0;
-double g_x, g_y, g_z = 0;
+float g_x, g_y, g_z = 0;
 double twist_x, twist_y, twist_z = 0;
 double yaw_corr_1s = .65; //subtract yaw by this value every 1000 micro
 // airspeed
@@ -27,10 +27,7 @@ double pitch = 0, roll = 0, yaw = 0; // Euler angles
 // double position_x, position_y, position_z; // Positions
 // double last_accel_x, last_accel_y, last_accel_z; // Last acceleration readings
 // unsigned long lastUpdateTime = 0; // Last update time
-// const double alpha = 0.5; // Complementary filter parameter
-
-
-
+const double alpha = 0.5; // Complementary filter parameter
 
 
 // location
@@ -60,7 +57,7 @@ void setup()
 {
   // yaw_corr_1s = 0;
   setupIMU();
-  setupServos();
+  // setupServos();
   lastUpdateTime = millis(); 
 }
 
@@ -69,36 +66,21 @@ void loop()
   currentTime = millis();
   deltaTime = (currentTime - lastUpdateTime) / 1000.0; // Time elapsed in seconds
   // update the current angle/orientation/acceleration of the rocket with the IMU
-  update_accel();
-  update_gyro();
-  updateOrientation();
+  // updateOrientation();
   // update the current velocity
-  // update_airspeed();
-  // update_location();
-  // update the location of the target with the camera, calculate distance from target
-  // update path planning
-  // update the canard angles
-  // get tick count
   // write_servo();
-  save_data();
   endTime = millis();
-  // Serial.print("Loop Duration: ");
-  // Serial.print(duration);
-  // Serial.print(" ms");
-  updateVelocity();
-  updatePositionWithOrientation();
-
+  updateIMUh();
+  // updateVelocity();
+  // updatePositionWithOrientation();
   // Print acceleration
-  
-
-  
-
-  // Optionally print the position to the Serial monitor
-  
+  print_eulers();
+  print_time();
+  Serial.println();  
   // Delay for a bit to not flood the serial output
-  // delay(100);
+  delay(10);
   // Serial.println();
-  yaw -= yaw_corr_1s * deltaTime;
+  // yaw -= yaw_corr_1s * deltaTime;
   lastUpdateTime = currentTime;
 }
 
@@ -120,7 +102,7 @@ void write_servo()
   // }
   double y_degrees = 90;
   double IMU_radian = y_degrees * M_PI / 180;
-  cr_servo.write(final_p(IMU_radian)); // tell servo to go to position in variable 'pos'
+  // cr_servo.write(final_p(IMU_radian)); // tell servo to go to position in variable 'pos'
   // Serial.println("angle in degrees ");
   // Serial.println(a * 57.2958);
   // Serial.println("final position ");
@@ -129,11 +111,21 @@ void write_servo()
   // Serial.print(y_degrees());
   Serial.print(",");
   Serial.print("position:");
-  Serial.println(final_p(IMU_radian));
+  // Serial.println(final_p(IMU_radian));
   delay(15);
 }
 
-void save_data()
-{
+void print_eulers(){
+  // Print the orientation
+  Serial.print("Pitch: ");
+  Serial.print(pitch);
+  Serial.print(" Roll: ");
+  Serial.print(roll);
+  Serial.print(" Yaw: ");
+  Serial.print(yaw);
+}
 
+void print_time() {
+  Serial.print(" Time: ");
+  Serial.print(currentTime);
 }

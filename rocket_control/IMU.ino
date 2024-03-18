@@ -4,67 +4,14 @@
 // double twist_x, twist_y, twist_z = 0;
 
 // Complementary filter parameter
-const double alpha = 0.5;
+// const double alpha = 0.5;
 
 // Accelerometer sample rate = 104.00 Hz
 
 
 
 // Time tracking
-unsigned long previousTime = 0;
-
-void setupIMU()
-{
-  Serial.begin(9600);
-  while (!Serial)
-    ;
-
-  if (!IMU.begin())
-  {
-    Serial.println("Failed to initialize IMU!");
-
-    while (1)
-      ;
-  }
-}
-
-void update_accel()
-{
-  float x, y, z;
-
-  if (IMU.accelerationAvailable())
-  {
-    IMU.readAcceleration(x, y, z);
-
-    // Serial.print(x);
-    // Serial.print('\t');
-    // Serial.print(y);
-    // Serial.print('\t');
-    // Serial.println(z);
-    accel_x = x;
-    accel_y = y;
-    accel_z = z;
-  }
-}
-
-void update_gyro()
-{
-  float x, y, z;
-
-  if (IMU.gyroscopeAvailable())
-  {
-    IMU.readGyroscope(x, y, z);
-
-    // Serial.print(x);
-    // Serial.print('\t');
-    // Serial.print(y);
-    // Serial.print('\t');
-    // Serial.println(z);
-    twist_x = x;
-    twist_y = y;
-    twist_z = z;
-  }
-}
+// unsigned long previousTime = 0;
 
 void updateOrientation() {
   // Calculate the time elapsed
