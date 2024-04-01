@@ -120,7 +120,7 @@ void updateIMU(float gx, float gy, float gz, float ax,
     _4q0 = 4.0f * q0;
     _4q1 = 4.0f * q1;
     _4q2 = 4.0f * q2;
-    _8q1 = 8.0f * q1;
+    _8q1 = 8.0f * q1;```
     _8q2 = 8.0f * q2;
     q0q0 = q0 * q0;
     q1q1 = q1 * q1;
@@ -175,10 +175,11 @@ float invSqrt(float x) {
   return conv.f;
 }
 
-void computeAngles() {
-  roll = atan2f(q0 * q1 + q2 * q3, 0.5f - q1 * q1 - q2 * q2);
-  pitch = asinf(-2.0f * (q1 * q3 - q0 * q2));
-  yaw = atan2f(q1 * q2 + q0 * q3, 0.5f - q2 * q2 - q3 * q3);
+void computeAngles() { //in degrees
+  printQs();
+  roll = atan2f(q0 * q1 + q2 * q3, 0.5f - q1 * q1 - q2 * q2) * 180 / PI;
+  pitch = asinf(-2.0f * (q1 * q3 - q0 * q2)) * 180 / PI;
+  yaw = atan2f(q1 * q2 + q0 * q3, 0.5f - q2 * q2 - q3 * q3) * 180 / PI;
   grav[0] = 2.0f * (q1 * q3 - q0 * q2);
   grav[1] = 2.0f * (q0 * q1 + q2 * q3);
   grav[2] = 2.0f * (q1 * q0 - 0.5f + q3 * q3);
@@ -190,13 +191,23 @@ void updateIMUh() {
   // float accel_x, accel_y, accel_z;
   bool newDataA = false; // Set to true if new data is read
   bool newDataG = false;
-  while (!IMU.accelerationAvailable()) {
+
+  if (IMU.accelerationAvailable()) {
     IMU.readAcceleration(accel_x, accel_y, accel_z);
-    newDataA = true;
-  }
-  while (!IMU.gyroscopeAvailable()) {
     IMU.readGyroscope(g_x, g_y, g_z);
+    updateIMU(g_x, g_y, g_z, accel_x, accel_y, accel_z, deltaTime); 
+    computeAngles();
     newDataA = true;
   }
-  updateIMU(g_x, g_y, g_z, accel_x, accel_y, accel_z, deltaTime); 
+}
+
+void printQs() {
+  Serial.print(" q0: ");
+  Serial.print(q0);
+  Serial.print(" q1: ");
+  Serial.print(q1);
+  Serial.print(" q2: ");
+  Serial.print(q2);
+  Serial.print(" q3: ");
+  Serial.print(q3);
 }

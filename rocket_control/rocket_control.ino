@@ -61,6 +61,8 @@ void setup()
   lastUpdateTime = millis(); 
 }
 
+// Pister wants 1 second wiggle for yaw, and roll.
+
 void loop()
 {
   currentTime = millis();
@@ -69,17 +71,17 @@ void loop()
   // updateOrientation();
   // update the current velocity
   // write_servo();
-  endTime = millis();
   updateIMUh();
   // updateVelocity();
   // updatePositionWithOrientation();
   // Print acceleration
   print_eulers();
+  print_as();
+  print_gs();
   print_time();
   Serial.println();  
   // Delay for a bit to not flood the serial output
   delay(10);
-  // Serial.println();
   // yaw -= yaw_corr_1s * deltaTime;
   lastUpdateTime = currentTime;
 }
@@ -128,4 +130,22 @@ void print_eulers(){
 void print_time() {
   Serial.print(" Time: ");
   Serial.print(currentTime);
+}
+
+void print_as() {
+  Serial.print(" a_x: ");
+  Serial.print(accel_x);
+  Serial.print(" a_y: ");
+  Serial.print(accel_y);
+  Serial.print(" a_z: ");
+  Serial.print(accel_z);
+}
+
+void print_gs() {
+  Serial.print(" g_x: ");
+  Serial.print(g_x);
+  Serial.print(" g_y: ");
+  Serial.print(g_y);
+  Serial.print(" g_z: ");
+  Serial.print(g_z);
 }

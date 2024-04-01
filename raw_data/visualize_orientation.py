@@ -45,7 +45,7 @@ z_axis = arrow(pos=vector(0, 0, 0), axis=vector(0, 0, 2),
 # label(pos=z_axis.axis, text='Z', zoffset=10)
 
 # Setup serial connection
-serial_port = '/dev/tty.usbmodem12401'
+serial_port = '/dev/tty.usbmodem1401'
 baud_rate = 9600  # Update this to match your device's baud rate
 ser = serial.Serial(serial_port, baud_rate)
 
@@ -80,17 +80,17 @@ def update_orientation(ser):
                 # x_axis = arrow(pos=vector(0, 0, 0), axis=orientation_vector(
                 #     pitch, yaw, roll), shaftwidth=0.1, color=color.red)
                 x_axis.rotate(angle=delta_roll_rad, axis=vector(1, 0, 0))
-                x_axis.rotate(angle=delta_pitch_rad, axis=vector(0, 0, 1))
-                x_axis.rotate(angle=delta_yaw_rad, axis=vector(0, -1, 0))
+                x_axis.rotate(angle=delta_pitch_rad, axis=vector(0, 0, -1))
+                x_axis.rotate(angle=delta_yaw_rad, axis=vector(0, 1, 0))
                 # set the orientation of the x axis
 
                 y_axis.rotate(angle=delta_roll_rad, axis=vector(1, 0, 0))
-                y_axis.rotate(angle=delta_pitch_rad, axis=vector(0, 0, 1))
-                y_axis.rotate(angle=delta_yaw_rad, axis=vector(0, -1, 0))
+                y_axis.rotate(angle=delta_pitch_rad, axis=vector(0, 0, -1))
+                y_axis.rotate(angle=delta_yaw_rad, axis=vector(0, 1, 0))
 
                 z_axis.rotate(angle=delta_roll_rad, axis=vector(1, 0, 0))
-                z_axis.rotate(angle=delta_pitch_rad, axis=vector(0, 0, 1))
-                z_axis.rotate(angle=delta_yaw_rad, axis=vector(0, -1, 0))
+                z_axis.rotate(angle=delta_pitch_rad, axis=vector(0, 0, -1))
+                z_axis.rotate(angle=delta_yaw_rad, axis=vector(0, 1, 0))
                 t = 5
 
                 if (abs(delta_pitch_rad) > t or abs(delta_roll_rad) > t or abs(delta_yaw_rad) > t):
