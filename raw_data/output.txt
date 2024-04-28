@@ -1,1 +1,9 @@
+nothing sent in
+nothing sent in
+nothing sent in
+Read message 0:
+Read message 1:
+Read message 2:
+Read message 3:
+Read message 4:
 Done reading random numbers
