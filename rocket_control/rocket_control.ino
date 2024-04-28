@@ -119,7 +119,7 @@ void write_servo()
 
 void print_eulers(){
   // Print the orientation
-  Serial.print("Pitch: ");
+  Serial.print(" Pitch: ");
   Serial.print(pitch);
   Serial.print(" Roll: ");
   Serial.print(roll);

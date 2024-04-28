@@ -120,7 +120,7 @@ void updateIMU(float gx, float gy, float gz, float ax,
     _4q0 = 4.0f * q0;
     _4q1 = 4.0f * q1;
     _4q2 = 4.0f * q2;
-    _8q1 = 8.0f * q1;```
+    _8q1 = 8.0f * q1;
     _8q2 = 8.0f * q2;
     q0q0 = q0 * q0;
     q1q1 = q1 * q1;
@@ -176,7 +176,7 @@ float invSqrt(float x) {
 }
 
 void computeAngles() { //in degrees
-  printQs();
+  // printQs();
   roll = atan2f(q0 * q1 + q2 * q3, 0.5f - q1 * q1 - q2 * q2) * 180 / PI;
   pitch = asinf(-2.0f * (q1 * q3 - q0 * q2)) * 180 / PI;
   yaw = atan2f(q1 * q2 + q0 * q3, 0.5f - q2 * q2 - q3 * q3) * 180 / PI;

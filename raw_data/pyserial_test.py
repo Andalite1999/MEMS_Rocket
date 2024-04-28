@@ -3,7 +3,7 @@ import time
 
 # Replace '/dev/tty.usbmodem1401' with your serial port name
 # Replace '9600' with the baud rate of your serial device
-serial_port = '/dev/tty.usbmodem1401'
+serial_port = '/dev/tty.usbmodem21101'
 baud_rate = 9600
 
 ser = serial.Serial(serial_port, baud_rate)
