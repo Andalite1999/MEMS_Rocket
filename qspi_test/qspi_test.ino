@@ -22,7 +22,7 @@ long collection_start_time;
 QSPIFBlockDevice root(PD_11, PF_9, PE_2, PD_13, PF_10, PG_6, QSPIF_POLARITY_MODE_0, 40000000);
 MBRBlockDevice blockDevice(&root, 1);
 int dataSize;
-bool debug = true;
+bool debug = false;
 
 void setup() {
   Serial.begin(115200);
@@ -84,7 +84,7 @@ void writeRandomNumbersToQSPI(MBRBlockDevice& blockDevice, size_t count, auto da
   Serial.println("Done writing random numbers");
 }
 
-void readRandomNumbersFromQPSI(MBRBlockDevice& blockDevice, size_t count, auto dataSize) {
+void readRandomNumbersFromQSPI(MBRBlockDevice& blockDevice, size_t count, auto dataSize) {
   // size_t dataSize = blockDevice.get_program_size(); // Get the program block size
   char buffer[dataSize];  // Buffer to hold data to be written
   for (size_t i = 0; i < count; i++) {
@@ -97,7 +97,7 @@ void readRandomNumbersFromQPSI(MBRBlockDevice& blockDevice, size_t count, auto d
     Serial.print("Read message ");
     Serial.print(i);
     Serial.print(": ");
-    Serial.println(String(buffer));
+    Serial.println(buffer);
   }
   Serial.println("Done reading random numbers");
 }
@@ -128,7 +128,7 @@ void loop_demo(MBRBlockDevice& blockDevice) {
   Serial.println("Erasable block size: " + String((unsigned int)eraseBlockSize / 1024) + " KB");
 
   if (debug){
-    readRandomNumbersFromQPSI(blockDevice, 5, dataSize);
+    readRandomNumbersFromQSPI(blockDevice, 5, dataSize);
     clearQSPIMemory(blockDevice);
     writeRandomNumbersToQSPI(blockDevice, 5, dataSize);
   }
@@ -138,8 +138,8 @@ void loop() {
   if (!debug) {
     if (Serial.available() > 0) {
       String command = Serial.readString();
-      if (command == "send\n") {
-        readRandomNumbersFromQPSI(blockDevice, 5, dataSize);
+        if (command == "send\n") {
+        readRandomNumbersFromQSPI(blockDevice, 5, dataSize);
         Serial.println("spirou");
         clearQSPIMemory(blockDevice);
         writeRandomNumbersToQSPI(blockDevice, 5, dataSize);

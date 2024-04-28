@@ -11,18 +11,13 @@ ser.write(b'send\n')  # Send command to Arduino to start sending data
 
 data = []
 while True:
-    try:
-        line = ser.readline().decode('utf-8').strip()
-        if line == "spirou":
-            break
-        if line:
-            data.append(line)
-    except UnicodeDecodeError:
-        print("Non UTF-8 byte encountered in the data")
     line_bytes = ser.readline()
+    print(line_bytes)
     try:
         line = line_bytes.decode('utf-8').strip()
-        if line == "done":
+        if line == "spirou":
+            print(line_bytes)
+            print(line)
             break
         if line:
             data.append(line)
@@ -36,5 +31,6 @@ ser.close()  # Close serial connection
 with open('output.txt', 'w') as f:
     for line in data:
         f.write(line + '\n')
+        print(line)
 
 print("Data written to output.txt")
